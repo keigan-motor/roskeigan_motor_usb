@@ -7,7 +7,7 @@
     
 <p>パッケージをインストール</p>
 
-    $ git clone https://github.com/keita-yamada/keigan.git
+    $ git clone https://github.com/keigan-motor/roskeigan_motor_usb.git
     $ cd ..
     $ catkin_make
 
