@@ -59,7 +59,7 @@ class Keigan_Ros_Mode():
         motor.on_motor_measurement_cb = None
         motor.stop()
         motor.free()
-        motor.enable()
+        motor.disable()
         rospy.loginfo("Stopping the motor...")
 
 if __name__ == '__main__':
