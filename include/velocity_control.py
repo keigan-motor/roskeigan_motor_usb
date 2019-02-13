@@ -50,7 +50,7 @@ class Keigan_Ros_Mode():
             print('Change usb mode >>>>>>>>')
             type = motor.interface_type['USB']+motor.interface_type['HDDBTN']
             motor.interface(type)
-            motor.saveAllRegisters()
+            # motor.saveAllRegisters()
             time.sleep(1)
             time.sleep(5)
             motor.on_motor_measurement_cb = self.on_motor_measurement_cb
