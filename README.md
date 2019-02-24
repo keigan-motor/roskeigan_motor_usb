@@ -14,5 +14,9 @@
 ## Demo
 <p>launchファイルから実行</p>
 
-    $ roslaunch roskeigan_motor_usb velocity_control_keigan.launch
+    $ roslaunch roskeigan_motor_usb usb_mode.launch
+    
+<p>ノードグラフ作成(新しいターミナルを開く)</p>
+
+    $ 
     
