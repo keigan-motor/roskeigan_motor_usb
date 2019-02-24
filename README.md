@@ -20,3 +20,13 @@
 
     $ rqt_graph
     
+<p>トピック確認</p>
+
+    $ rostopic list
+    
+<p>トピックの中身を確認</p>
+
+    $ rostopic echo /motor_command
+    
+    $ rostopic echo /rot_state
+    
