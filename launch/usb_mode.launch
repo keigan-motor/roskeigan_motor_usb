@@ -1,0 +1,40 @@
+<launch>
+    <!-- KeiganMotorのdevice_nameを設定 -->
+    <arg name="device_name"     default="/dev/ttyUSB0"/>
+
+    <!-- 速度の大きさを設定 -->
+    <arg name="speed"    default="1.0"/>
+
+    <!-- 位置をプリセット(原点)を設定 -->
+    <arg name="preset"    default="1.0"/>
+
+    <!-- 位置のプリセットに関するオフセット量を設定 -->
+    <arg name="readPositionOffset"    default="1.0"/>
+
+    <!-- 速度制御を設定 -->
+    <arg name="run"    default="1.0"/>
+
+    <!-- 位置制御(絶対位置)を設定 -->
+    <arg name="moveTo"    default="1.0"/>
+
+    <!-- 位置制御(相対位置)を設定 -->
+    <arg name="moveBy"    default="1.0"/>
+
+    <!-- トルク制御を設定 -->
+    <arg name="hold"    default="1.0"/>
+
+    <!-- 上記で設定したパラメータをROSのパラメータに設定 -->
+    <param name="device_name"   value="$(arg device_name)"/>
+    <param name="speed"  value="$(arg speed)"/>
+    <param name="preset"  value="$(arg preset)"/>
+    <param name="readPositionOffset"  value="$(arg readPositionOffset)"/>
+    <param name="run"  value="$(arg run)"/>
+    <param name="moveTo"  value="$(arg moveTo)"/>
+    <param name="moveBy"  value="$(arg moveBy)"/>
+    <param name="hold"  value="$(arg hold)"/>
+
+    <!-- nodeの設定　パッケージ、ノード名、使用するプログラム -->
+    <node pkg="roskeigan_motor_usb" name="keigan_ros_mode" type="usb_mode_test.py" output="screen"/>
+    <node pkg="roskeigan_motor_usb" name="keigan_ros_control" type="usb_control_test.py" output="screen"/>
+
+</launch>
