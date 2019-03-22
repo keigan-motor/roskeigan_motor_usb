@@ -7,9 +7,13 @@ import os
 import sys
 import time
 import rospy
-# import KMControllers
+import KMControllerROS
+sys.path.append('/home/harada/catkin_ws/src')
+# from roskeigan_motor_usb.msg import rot_state
+# from roskeigan_motor_usb.msg import motor_command
 from roskeigan_motor_usb.msg import rot_state
 from roskeigan_motor_usb.msg import motor_command
+
 import usb_mode_test
 
 # KeiganMotorのROSに対応させるクラス
@@ -35,11 +39,12 @@ class Keigan_Ros_Control():
         pass
 
 if __name__ == '__main__':
-    keigan_ros_control = Keigan_Ros_Control()
+    node_instance = Keigan_Ros_Control()
     # 制御周期
     ROS_RATE = 30
     R = rospy.Rate(ROS_RATE)
     # [ctrl]+[c]でプログラムの終了するまでループ
     while not rospy.is_shutdown():
-        keigan_ros_control.setstate()
+        node_instance.setstate()
         R.sleep()
+

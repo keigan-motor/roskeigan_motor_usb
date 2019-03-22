@@ -34,7 +34,7 @@
     <param name="hold"  value="$(arg hold)"/>
 
     <!-- nodeの設定　パッケージ、ノード名、使用するプログラム -->
-    <node pkg="roskeigan_motor_usb" name="keigan_ros_mode" type="usb_mode_test.py" output="screen"/>
-    <node pkg="roskeigan_motor_usb" name="keigan_ros_control" type="usb_control_test.py" output="screen"/>
+    <node pkg="roskeigan_motor_usb" name="keigan_ros_node" type="usb_mode_test.py" output="screen"/>
+      <!--<node pkg="roskeigan_motor_usb" name="keigan_ros_control" type="usb_control_test.py" output="screen"/>-->
 
 </launch>

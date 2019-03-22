@@ -7,18 +7,24 @@ import os
 import sys
 import time
 import rospy
+
+sys.path.append('/home/harada/catkin_ws/devel/lib/python2.7/dist-packages')#todo::ros実行時のpythonで含まれない
+
+import pprint
+pprint.pprint(sys.path)
+
 from roskeigan_motor_usb.msg import motor_command
-import KMControllers
+import KMControllerROS
 
 # KeiganMotorのdevice_nameを指定
 device_name = rospy.get_param('device_name')
-motor = KMControllers.USBController(device_name)
+motor = KMControllerROS.USBController(device_name)
 
 # KeiganMotorのROSに対応させるクラス
-class Keigan_Ros_Mode():
+class Keigan_Ros_Node():
     def __init__(self):
         # ノード初期化
-        rospy.init_node('keigan_ros_mode')
+        rospy.init_node('keigan_ros_node')
         # Publisherを宣言
         self.pub = rospy.Publisher('motor_command', motor_command, queue_size = 10)
         # 変数の初期化
@@ -37,21 +43,6 @@ class Keigan_Ros_Mode():
         motor.on_motor_measurement_cb = self.on_motor_measurement_cb
         motor.enable()
         motor.presetPosition(0)
-
-    # KeiganMotorをUSBモードに設定
-    def setup_motor_usb_mode(self):
-        if (motor):
-            motor.on_motor_measurement_cb = None
-            print('Change usb mode >>>>>>>>')
-            type = motor.interface_type['USB']+motor.interface_type['HDDBTN']
-            motor.interface(type)
-            motor.saveAllRegisters()
-            time.sleep(1)
-            time.sleep(5)
-            motor.on_motor_measurement_cb = self.on_motor_measurement_cb
-            print('>>>>>>>>Comp Change usb mode')
-        else:
-            sys.stderr.write('Not motor attached\n')
 
     # motor_commandのデータをPublish
     def publish(self):
@@ -87,12 +78,11 @@ class Keigan_Ros_Mode():
     
 
 if __name__ == '__main__':
-    keigan = Keigan_Ros_Mode()
+    node_instance = Keigan_Ros_Node()
     # 制御周期
     ROS_RATE = 30
     R = rospy.Rate(ROS_RATE)
-    keigan.connection_usb_motor()
-    keigan.setup_motor_usb_mode()
+    node_instance.connection_usb_motor()
     while not rospy.is_shutdown():
-        keigan.publish()
+        node_instance.publish()
         R.sleep()
