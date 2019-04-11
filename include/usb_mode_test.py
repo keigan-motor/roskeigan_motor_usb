@@ -8,10 +8,9 @@ import sys
 import time
 import rospy
 
-sys.path.append('/home/harada/catkin_ws/devel/lib/python2.7/dist-packages')#todo::ros実行時のpythonで含まれない
-
-import pprint
-pprint.pprint(sys.path)
+#sys.path.append('/home/harada/catkin_ws/devel/lib/python2.7/dist-packages')#todo::ros実行時のpythonで含まれない
+# import pprint
+# pprint.pprint(sys.path)
 
 from roskeigan_motor_usb.msg import motor_command
 import KMControllerROS
@@ -20,13 +19,15 @@ import KMControllerROS
 device_name = rospy.get_param('device_name')
 motor = KMControllerROS.USBController(device_name)
 
-# KeiganMotorのROSに対応させるクラス
+# KeiganMotorの仮想ノード。モーターの数だけ存在する
+# keigan_ros_nodeから操作する
 class Keigan_Ros_Node():
     def __init__(self):
         # ノード初期化
         rospy.init_node('keigan_ros_node')
         # Publisherを宣言
-        self.pub = rospy.Publisher('motor_command', motor_command, queue_size = 10)
+       # self.pub = rospy.Publisher('motor_command', motor_command, queue_size = 10)
+        self.pub = rospy.Publisher('/mt_position', motor_command, queue_size=10)
         # 変数の初期化
         self.command_pub = motor_command()
         # [ctrl]+[c]でプログラムの終了　()内はプログラム終了後に実行される関数

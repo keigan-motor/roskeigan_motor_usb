@@ -14,8 +14,7 @@ from roskeigan_motor_usb.msg import motor_command
 
 import usb_mode_test
 
-# KeiganMotorのROSに対応させるクラス
-#keigan_ros_nodeに接続してkeigan_ros_nodeからモーター情報を取得したり、keigan_ros_nodeに制御コマンドを送るサーバー
+#テスト用　keigan_ros_nodeに接続してkeigan_ros_nodeに制御コマンドを送る
 class Keigan_Ros_Control():
     def __init__(self):
         # ノード名
