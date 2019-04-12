@@ -28,8 +28,7 @@ class Keigan_Ros_Mode():
 
     def on_motor_measurement_cb(self, measurement):
         if (measurement):
-            # 取得した値をパラメータとして設定する
-            rospy.set_param('/mt_position', measurement)
+            pass
 
     # KeiganMotorとUSB接続
     def connection_usb_motor(self):

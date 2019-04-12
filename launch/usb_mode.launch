@@ -3,25 +3,25 @@
     <arg name="device_name"     default="/dev/ttyUSB0"/>
 
     <!-- 速度の大きさを設定 -->
-    <arg name="speed"    default="1.0"/>
+    <arg name="speed"    default="5.0"/>
 
     <!-- 位置をプリセット(原点)を設定 -->
-    <arg name="preset"    default="1.0"/>
+    <arg name="preset"    default="0.0"/>
 
     <!-- 位置のプリセットに関するオフセット量を設定 -->
-    <arg name="readPositionOffset"    default="1.0"/>
+    <arg name="readPositionOffset"    default="0.0"/>
 
     <!-- 速度制御を設定 -->
     <arg name="run"    default="1.0"/>
 
     <!-- 位置制御(絶対位置)を設定 -->
-    <arg name="moveTo"    default="1.0"/>
+    <arg name="moveTo"    default="0.0"/>
 
     <!-- 位置制御(相対位置)を設定 -->
-    <arg name="moveBy"    default="1.0"/>
+    <arg name="moveBy"    default="0.0"/>
 
     <!-- トルク制御を設定 -->
-    <arg name="hold"    default="1.0"/>
+    <arg name="hold"    default="0.0"/>
 
     <!-- 上記で設定したパラメータをROSのパラメータに設定 -->
     <param name="device_name"   value="$(arg device_name)"/>
