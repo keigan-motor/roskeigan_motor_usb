@@ -14,19 +14,15 @@
 ## Demo
 <p>launchファイルから実行</p>
 
-    $ roslaunch roskeigan_motor_usb usb_mode.launch
-    
-<p>ノードグラフ作成(新しいターミナルを開く)</p>
+    $ roslaunch roskeigan_motor_usb keigan_ros_node_sample.launch
 
-    $ rqt_graph
-    
-<p>トピック確認</p>
+## その他
+<p>
+制御コマンドと引数の説明は下記ローレベルAPIを参照<br/>
 
-    $ rostopic list
-    
-<p>トピックの中身を確認</p>
+[https://document.keigan-motor.com/software_dev/lowapis/motor_action](https://document.keigan-motor.com/software_dev/lowapis/motor_action)
 
-    $ rostopic echo /motor_command
-    
-    $ rostopic echo /rot_state
-    
+</p>
+<p>
+テスト版の為、現時点で実装されている制御コードは、KMControllerROS.py::72行目以下を参照
+</p>

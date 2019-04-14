@@ -1,13 +1,13 @@
 <launch>
    <node pkg="rostopic" name="rostopic_rot_state" type="rostopic" args="echo /rot_state" launch-prefix="xterm -e"/>
+
     <node pkg="rqt_graph" name="rqt_graph" type="rqt_graph"/>
     <node pkg="rqt_console" name="rqt_console" type="rqt_console"/>
 
-    <!--<param name="device_name"   value="/dev/ttyUSB0"/> -->
     <!-- nodeの設定　パッケージ、ノード名、使用するプログラム -->
     <node pkg="roskeigan_motor_usb" name="keigan_ros_node" type="keigan_ros_node.py" output="screen">
         <param name="device_name" value="/dev/ttyUSB0" />
     </node>
-    <!--<node pkg="roskeigan_motor_usb" name="keigan_ros_node_control_test" type="keigan_ros_node_control_test.py" output="screen"/>-->
+    <node pkg="roskeigan_motor_usb" name="keigan_ros_node_control_test" type="keigan_ros_node_control_test.py" output="screen"/>
 
 </launch>

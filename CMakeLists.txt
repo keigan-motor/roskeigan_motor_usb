@@ -51,10 +51,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
 add_message_files(
   FILES
-  motor_command.msg
   rot_state.msg
-#   Message1.msg
-#   Message2.msg
+  motor_command.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -109,9 +107,9 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES roskeigan_motor_usb
-#  CATKIN_DEPENDS geometry_msgs roscpp rospy std_msgs
-#  DEPENDS system_lib
+  LIBRARIES roskeigan_motor_usb
+  CATKIN_DEPENDS geometry_msgs roscpp rospy std_msgs
+  DEPENDS system_lib
 )
 
 ###########
